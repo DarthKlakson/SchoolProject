@@ -8,190 +8,74 @@ import {
     CDBSidebarMenuItem,
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
+import './Sidebar.css'; 
 
 const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
     useEffect(() => {
         const handleResize = () => {
-            setWindowWidth(window.innerWidth);
+         
             if (window.innerWidth < 768) {
                 setIsCollapsed(true);
             }
         };
 
         window.addEventListener('resize', handleResize);
-        handleResize();
+        handleResize(); 
 
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, [setIsCollapsed]);
 
-    const sidebarWidth = isCollapsed ? '100px' : '260px';
-
-    const menuItemStyle = {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-    };
-
-    const collapsedIconStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-    };
-
-    const iconStyle = {
-        width: isCollapsed ? '40px' : '20px',
-        height: isCollapsed ? '40px' : '20px',
-        transition: 'all 0.3s ease',
+    
+    const renderMenuItem = (icon, text, path) => {
+        return (
+            <NavLink exact to={path} activeClassName="activeClicked">
+                <CDBSidebarMenuItem className="sidebar-menu-item">
+                    {isCollapsed ? (
+                        <div className="collapsed-icon-container">
+                            <img src={icon} className="menu-icon collapsed" alt={text} />
+                        </div>
+                    ) : (
+                        <div className="menu-item-container">
+                            <img src={icon} className="menu-icon" alt={text} />
+                            {text}
+                        </div>
+                    )}
+                </CDBSidebarMenuItem>
+            </NavLink>
+        );
     };
 
     return (
-        <div
-            className="sidebar-container"
-            style={{
-                position: 'fixed',
-                height: '100vh',
-                left: 0,
-                top: 0,
-                zIndex: 1000,
-                width: sidebarWidth,
-                transition: 'width 0.3s ease',
-            }}
-        >
+        <div className={`sidebar-container ${isCollapsed ? 'collapsed' : ''}`}>
             <CDBSidebar
                 textColor="#fff"
                 backgroundColor="#32CD32"
                 className={isCollapsed ? 'collapsed' : ''}
-                style={{
-                    height: '100%',
-                    overflowY: 'auto',
-                    position: 'static',
-                    transition: 'width 0.3s ease',
-                }}
             >
-                <CDBSidebarHeader
-                    style={{
-                        padding: 0,
-                        margin: 0,
-                        height: isCollapsed ? '100px' : 'auto',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
-                >
+                <CDBSidebarHeader className="sidebar-header">
                     <img
                         src="/img/FixFit_logo_small.png"
                         alt="FixFit Logo"
-                        style={{
-                            width: isCollapsed ? '60px' : '200px',
-                            height: isCollapsed ? '60px' : 'auto',
-                            objectFit: 'contain',
-                            transition: 'all 0.3s ease',
-                            cursor: 'pointer',
-                        }}
+                        className={`logo ${isCollapsed ? 'collapsed' : ''}`}
                         onClick={() => setIsCollapsed(!isCollapsed)}
                     />
                 </CDBSidebarHeader>
 
                 <CDBSidebarContent className="sidebar-content">
                     <CDBSidebarMenu>
-                        <NavLink exact to="/" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem style={{ marginBottom: '20px' }}>
-                                {isCollapsed ? (
-                                    <div style={collapsedIconStyle}>
-                                        <img src="./icons/home.png" style={iconStyle} alt="przepisy" />
-                                    </div>
-                                ) : (
-                                    <div style={menuItemStyle}>
-                                        <img src="./icons/home.png" style={iconStyle} alt="przepisy" />
-                                        Przepisy
-                                    </div>
-                                )}
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-                        <NavLink exact to="/przepisy" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem style={{ marginBottom: '20px' }}>
-                                {isCollapsed ? (
-                                    <div style={collapsedIconStyle}>
-                                        <img src="/icons/dish.png" style={iconStyle} alt="przepisy" />
-                                    </div>
-                                ) : (
-                                    <div style={menuItemStyle}>
-                                        <img src="/icons/dish.png" style={iconStyle} alt="przepisy" />
-                                        Przepisy
-                                    </div>
-                                )}
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-
-                        <NavLink exact to="/jadlospis" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem style={{ marginBottom: '20px' }}>
-                                {isCollapsed ? (
-                                    <div style={collapsedIconStyle}>
-                                        <img src="/icons/date.png" style={iconStyle} alt="jadlospis" />
-                                    </div>
-                                ) : (
-                                    <div style={menuItemStyle}>
-                                        <img src="/icons/date.png" style={iconStyle} alt="jadlospis" />
-                                        Mój Jadłospis
-                                    </div>
-                                )}
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-
-                        <NavLink exact to="/kalkulator" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem style={{ marginBottom: '20px' }}>
-                                {isCollapsed ? (
-                                    <div style={collapsedIconStyle}>
-                                        <img src="/icons/calculator.png" style={iconStyle} alt="kalkulator" />
-                                    </div>
-                                ) : (
-                                    <div style={menuItemStyle}>
-                                        <img src="/icons/calculator.png" style={iconStyle} alt="kalkulator" />
-                                        Kalkulator
-                                    </div>
-                                )}
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-
-                        <NavLink exact to="/diety" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem style={{ marginBottom: '20px' }}>
-                                {isCollapsed ? (
-                                    <div style={collapsedIconStyle}>
-                                        <img src="/icons/diet.png" style={iconStyle} alt="diety" />
-                                    </div>
-                                ) : (
-                                    <div style={menuItemStyle}>
-                                        <img src="/icons/diet.png" style={iconStyle} alt="diety" />
-                                        Diety
-                                    </div>
-                                )}
-                            </CDBSidebarMenuItem>
-                        </NavLink>
-
-                        <NavLink exact to="/kontakt" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem style={{ marginBottom: '20px' }}>
-                                {isCollapsed ? (
-                                    <div style={collapsedIconStyle}>
-                                        <img src="/icons/contact-information.png" style={iconStyle} alt="kontakt" />
-                                    </div>
-                                ) : (
-                                    <div style={menuItemStyle}>
-                                        <img src="/icons/contact-information.png" style={iconStyle} alt="kontakt" />
-                                        Kontakt
-                                    </div>
-                                )}
-                            </CDBSidebarMenuItem>
-                        </NavLink>
+                        {renderMenuItem("./icons/home.png", "Strona Główna", "/")}
+                        {renderMenuItem("/icons/dish.png", "Przepisy", "/przepisy")}
+                        {renderMenuItem("/icons/date.png", "Mój Jadłospis", "/jadlospis")}
+                        {renderMenuItem("/icons/calculator.png", "Kalkulator", "/kalkulator")}
+                        {renderMenuItem("/icons/diet.png", "Diety", "/diety")}
+                        {renderMenuItem("/icons/contact-information.png", "Kontakt", "/kontakt")}
                     </CDBSidebarMenu>
                 </CDBSidebarContent>
 
-                <CDBSidebarFooter style={{ textAlign: 'center' }}>
-                    <div style={{ padding: isCollapsed ? '10px 0' : '20px 5px' }}>
+                <CDBSidebarFooter className="sidebar-footer">
+                    <div className={`footer-content ${isCollapsed ? 'collapsed' : ''}`}>
                         {!isCollapsed && 'MŁach - all rights reserved'}
                     </div>
                 </CDBSidebarFooter>

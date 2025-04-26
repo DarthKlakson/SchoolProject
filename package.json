@@ -1,6 +1,14 @@
 {
   "dependencies": {
+    "bootstrap": "^5.3.5",
     "cdbreact": "^1.5.19",
+    "mdb-react-ui-kit": "^9.0.0",
+    "mdbreact": "^5.2.0",
+    "moment": "^2.30.1",
+    "react-big-calendar": "^1.18.0",
+    "react-bootstrap": "^2.10.9",
+    "react-calendar": "^5.1.0",
+    "react-datepicker": "^8.3.0",
     "react-icons": "^5.5.0"
   }
 }
