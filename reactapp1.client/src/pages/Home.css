@@ -1,0 +1,80 @@
+
+.home-container {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+}
+
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+
+.recipe-card {
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+    .recipe-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+
+.diet-card {
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+    .diet-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+
+.quote-container {
+    text-align: center;
+    margin: 3rem 0;
+    background-color: #e9ecef;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+
+.article-container {
+    text-align: center;
+    margin: 3rem 0;
+    background-color: #e9ecef;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+
+.featured-article {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+
+.navigation-links {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+
+@media (max-width: 768px) {
+    .home-container {
+        padding: 30px 0;
+    }
+
+    .section-title {
+        margin-bottom: 2rem;
+    }
+
+    .quote-container,
+    .article-container {
+        padding: 20px;
+        margin: 2rem 0;
+    }
+}

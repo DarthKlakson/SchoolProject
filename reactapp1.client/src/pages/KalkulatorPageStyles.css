@@ -1,0 +1,68 @@
+.calculator-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.calculator-page h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.calculator-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.calculator-inputs select,
+.add-button {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add-button {
+    background-color: #32CD32;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.add-button:hover {
+    background-color: #28a428;
+}
+
+.calculator-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.calculator-table th,
+.calculator-table td {
+    padding: 10px;
+    border: 1px solid #eee;
+    text-align: center;
+    }
+
+.remove-button {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.remove-button:hover {
+    color: #c0392b;
+}
+
+.total-calories {
+    text-align: right;
+    font-weight: bold;
+    font-size: 18px;
+}

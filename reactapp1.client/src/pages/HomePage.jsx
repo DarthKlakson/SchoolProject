@@ -1,17 +1,16 @@
 ﻿import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';  // Importujemy NavLink
+import { NavLink } from 'react-router-dom';
+import './Home.css'; 
 
 export const Home = () => {
     return (
-        <div style={{ backgroundColor: '#f8f9fa', padding: '50px 0' }}>
+        <div className="home-container">
             <Container>
-                {/* Sekcja Przepisy */}
-                <h2 className="text-center mb-5">Top Przepisy</h2>
+                <h2 className="section-title">Top Przepisy</h2>
                 <Row>
-                    {/* Przepis 1 */}
                     <Col md={4} sm={6} className="mb-4">
-                        <Card>
+                        <Card className="recipe-card">
                             <Card.Img variant="top" src="./przepisyimg/pizza.jpg" />
                             <Card.Body>
                                 <Card.Title>Keto Pizza</Card.Title>
@@ -23,9 +22,8 @@ export const Home = () => {
                         </Card>
                     </Col>
 
-                    {/* Przepis 2 */}
                     <Col md={4} sm={6} className="mb-4">
-                        <Card>
+                        <Card className="recipe-card">
                             <Card.Img variant="top" src="./przepisyimg/gofry.jpg" />
                             <Card.Body>
                                 <Card.Title>Keto Gofry</Card.Title>
@@ -37,9 +35,8 @@ export const Home = () => {
                         </Card>
                     </Col>
 
-                    {/* Przepis 3 */}
                     <Col md={4} sm={6} className="mb-4">
-                        <Card>
+                        <Card className="recipe-card">
                             <Card.Img variant="top" src="./przepisyimg/gyros.jpg" />
                             <Card.Body>
                                 <Card.Title>Keto Gyros</Card.Title>
@@ -52,12 +49,10 @@ export const Home = () => {
                     </Col>
                 </Row>
 
-                {/* Sekcja z najpopularniejszymi dietami */}
-                <h2 className="text-center mb-5">Najpopularniejsze diety</h2>
+                <h2 className="section-title">Najpopularniejsze diety</h2>
                 <Row>
-                    {/* Dieta 1 */}
                     <Col md={4} sm={6} className="mb-4">
-                        <Card>
+                        <Card className="diet-card">
                             <Card.Img variant="top" src="./dietyimg/dietaketo.jpg" />
                             <Card.Body>
                                 <Card.Title>Dieta Ketogeniczna</Card.Title>
@@ -69,9 +64,8 @@ export const Home = () => {
                         </Card>
                     </Col>
 
-                    {/* Dieta 2 */}
                     <Col md={4} sm={6} className="mb-4">
-                        <Card>
+                        <Card className="diet-card">
                             <Card.Img variant="top" src="./dietyimg/dietasr.jpg" />
                             <Card.Body>
                                 <Card.Title>Dieta Śródziemnomorska</Card.Title>
@@ -83,9 +77,8 @@ export const Home = () => {
                         </Card>
                     </Col>
 
-                    {/* Dieta 3 */}
                     <Col md={4} sm={6} className="mb-4">
-                        <Card>
+                        <Card className="diet-card">
                             <Card.Img variant="top" src="./dietyimg/dietaroslinna.jpeg" />
                             <Card.Body>
                                 <Card.Title>Dieta Roślinna</Card.Title>
@@ -98,8 +91,7 @@ export const Home = () => {
                     </Col>
                 </Row>
 
-                {/* Sekcja "Słowo na dziś" */}
-                <div className="text-center my-5" style={{ backgroundColor: '#e9ecef', padding: '30px', borderRadius: '10px' }}>
+                <div className="quote-container">
                     <h3>Słowo na dziś</h3>
                     <blockquote className="blockquote">
                         <p>"Wytrwałość to nie dążenie do celu, to sposób, w jaki do niego zmierzamy."</p>
@@ -107,10 +99,9 @@ export const Home = () => {
                     </blockquote>
                 </div>
 
-                {/* Sekcja "Wybrany artykuł" */}
-                <div className="text-center my-5" style={{ backgroundColor: '#e9ecef', padding: '30px', borderRadius: '10px' }}>
+                <div className="article-container">
                     <h3>Wybrany artykuł</h3>
-                    <Card className="mx-auto" style={{ maxWidth: '600px' }}>
+                    <Card className="featured-article">
                         <Card.Img variant="top" src="./artykuly/carrots.jpg" />
                         <Card.Body>
                             <Card.Title>"Jak dieta wpływa na zdrowie?"</Card.Title>
@@ -122,8 +113,7 @@ export const Home = () => {
                     </Card>
                 </div>
 
-                {/* Przycisk do sekcji Przepisów i Kontakt */}
-                <div className="text-center mt-5">
+                <div className="navigation-links">
                     <NavLink to="/przepisy" className="btn btn-secondary mx-2">Przepisy</NavLink>
                     <NavLink to="/kontakt" className="btn btn-secondary mx-2">Kontakt</NavLink>
                 </div>
