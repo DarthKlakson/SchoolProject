@@ -2,3 +2,10 @@
     height: 180px;
     object-fit: cover;
 }
+
+img.img-fluid {
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
